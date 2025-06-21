@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnackStack 🍽️ | Food Tracker</title>
+    <link rel="icon" href="https://emojiapi.dev/api/v1/bento/64.png" type="image/png" />
+   
+  <style>
+    /* ====== Base Page Styling ====== */
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      color: #e76f51;
+    }
+
+    form, #category-filter, #food-list {
+      margin-bottom: 20px;
+    }
+
+    /* ====== Input + Button Styling ====== */
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 30%;
+      box-sizing: border-box;
+    }
+
+    form button {
+      flex: 1;
+      min-width: 100px;
+      padding: 8px 12px;
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #21867a;
+    }
+
+    /* ====== Food List Styling ====== */
+    li {
+      padding: 8px;
+      margin-bottom: 6px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ====== Fade-In Animation ====== */
+    li.fade-in {
+      animation: fade 0.4s ease-in;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- ====== Page Title ====== -->
+  <h1>🍽️ SnackStack</h1>
+
+  <!-- ====== Food Input Form ====== -->
+  <form id="food-form">
+    <input type="text" id="food-name" placeholder="Food name" required />
+    <input type="text" id="food-category" placeholder="Category" required />
+    <button type="submit">Add Food</button>
+  </form>
+
+  <!-- ====== Filter Section ====== -->
+  <h2>Filter by Category:</h2>
+  <input type="text" id="category-filter" placeholder="e.g., Healthy" />
+  <button onclick="filterByCategory()">Filter</button>
+  <button onclick="resetFilter()">Reset</button>
+
+  <!-- ====== Display Section ====== -->
+  <h2>Your Favorite Foods</h2>
+  <ul id="food-list"></ul>
+
+  <p id="food-fact" style="font-style: italic; color: #555;"></p>
+
+
+  <!-- ====== JS Logic ====== -->
+  <script src="snackstack.js"></script>
+
+</body>
+</html>
