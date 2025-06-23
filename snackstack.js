@@ -47,6 +47,7 @@ function renderFoods(foodArray) {
 
   if (foodArray.length === 0) {
     list.innerHTML = "<li>No favorite foods yet!</li>";
+    updateStats(); 
     return;
   }
 
@@ -69,6 +70,8 @@ function renderFoods(foodArray) {
     li.appendChild(btn);
     list.appendChild(li);
   });
+  
+  updateStats(); 
 }
 
 // ➕ Handle food submission
@@ -109,3 +112,25 @@ function resetFilter() {
 // 🚀 Start by rendering any saved foods
 renderFoods(favoriteFoods);
 showRandomFact(); // ✨ Show a fun fact on page load too
+
+function updateStats() {
+  const total = favoriteFoods.length;
+
+  const totalChars = favoriteFoods.reduce((sum, food) => sum + food.name.length, 0);
+
+  let longest = "";
+  favoriteFoods.forEach(food => {
+    if (food.name.length > longest.length) {
+      longest = food.name;
+    }
+  });
+
+  document.getElementById("stat-total").textContent = `Total snacks: ${total}`;
+  document.getElementById("stat-characters").textContent = `Total characters: ${totalChars}`;
+  document.getElementById("stat-longest").textContent = `Longest snack name: ${longest || "N/A"}`;
+}
+
+
+
+
+
