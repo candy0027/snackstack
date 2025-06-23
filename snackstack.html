@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SnackStack 🍽️ | Food Tracker</title>
-    <link rel="icon" href="https://emojiapi.dev/api/v1/bento/64.png" type="image/png" />
-   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnackStack 🍽️ | Food Tracker</title>
+  <link rel="icon" href="https://emojiapi.dev/api/v1/bento/64.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
   <style>
+    /* ====== Global Transition for Smooth Hover Effects ====== */
+    * {
+      transition: all 0.2s ease;
+    }
+
     /* ====== Base Page Styling ====== */
     body {
-      font-family: sans-serif;
+      font-family: 'Quicksand', sans-serif;
       padding: 20px;
       max-width: 600px;
       margin: auto;
-      background-color: #f8f9fa;
+      background: linear-gradient(to bottom, #f8f9fa, #e6f2f2);
       color: #333;
     }
 
@@ -54,6 +60,7 @@
 
     button:hover {
       background-color: #21867a;
+      transform: scale(1.03);
     }
 
     /* ====== Food List Styling ====== */
@@ -66,6 +73,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.02);
     }
 
     /* ====== Fade-In Animation ====== */
@@ -77,7 +90,33 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
+    /* ====== Snack Stats Section ====== */
+    #snack-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      list-style: none;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    #snack-stats li {
+      background: #fff;
+      padding: 10px;
+      border-left: 5px solid #2a9d8f;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* ====== Responsive Input Stacking on Small Screens ====== */
+    @media (max-width: 500px) {
+      input[type="text"],
+      form button {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -102,16 +141,16 @@
   <h2>Your Favorite Foods</h2>
   <ul id="food-list"></ul>
 
+  <!-- ====== Stats Section ====== -->
   <h2>📊 SnackStack Stats</h2>
-<ul id="snack-stats" style="background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
-  <li id="stat-total">Total snacks: 0</li>
-  <li id="stat-characters">Total characters: 0</li>
-  <li id="stat-longest">Longest snack name: N/A</li>
-</ul>
+  <ul id="snack-stats" style="background: #fff; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
+    <li id="stat-total">Total snacks: 0</li>
+    <li id="stat-characters">Total characters: 0</li>
+    <li id="stat-longest">Longest snack name: N/A</li>
+  </ul>
 
-
+  <!-- ====== Fun Fact Section ====== -->
   <p id="food-fact" style="font-style: italic; color: #555;"></p>
-
 
   <!-- ====== JS Logic ====== -->
   <script src="snackstack.js"></script>
